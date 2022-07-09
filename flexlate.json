@@ -14,7 +14,15 @@
   "applied_templates": [
     {
       "name": "copier-flexlate-dev-semantic-release",
-      "data": {},
+      "data": {
+        "repo_name": "copier-nextjs",
+        "full_name": "Copier Template for a NextJS App",
+        "repo_username": "nickderobertis",
+        "short_description": "Copier Template for a Next.js App",
+        "author": "Nick DeRobertis",
+        "author_email": "derobertis.nick@gmail.com",
+        "main_branch_name": "main"
+      },
       "version": "489bd77a5689a63a072890d3b8f93d1b7be394f9",
       "add_mode": "local",
       "root": "."
