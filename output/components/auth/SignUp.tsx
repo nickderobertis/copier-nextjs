@@ -1,10 +1,21 @@
+import { ReactNode, useMemo } from "react";
 import { useForm } from "react-hook-form";
+import TextInput from "../forms/TextInput";
 
 type FormData = {
   name: string;
   email: string;
   password: string;
 };
+
+function TextInputWrapper(props: { input: ReactNode }): JSX.Element {
+  const { input } = props;
+  return (
+    <div className="md:gap-6">
+      <div className="mb-6">{input}</div>
+    </div>
+  );
+}
 
 export default function SignUp(): JSX.Element {
   const {
@@ -14,34 +25,36 @@ export default function SignUp(): JSX.Element {
   } = useForm<FormData>();
   const onSubmit = data => console.log(data);
 
-  console.log("errors", errors);
+  const textInputs: ReactNode[] = useMemo(() => {
+    const baseInputs = [
+      <TextInput
+        {...register("name", { required: true })}
+        type="text"
+        placeholder="Name"
+        error={errors.name}
+      />,
+      <TextInput
+        {...register("email", { required: true })}
+        type="email"
+        placeholder="Email address"
+        error={errors.email}
+      />,
+      <TextInput
+        {...register("password", { required: true })}
+        type="password"
+        placeholder="Password"
+        error={errors.password}
+      />,
+    ];
+    return baseInputs.map((input, index) => (
+      <TextInputWrapper key={index} input={input} />
+    ));
+  }, [errors.email, errors.name, errors.password]);
 
   return (
     <div className="block rounded-lg shadow-lg bg-white px-6 py-12 md:px-12">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="md:gap-6">
-          <div className="mb-6">
-            <input
-              {...register("name", { required: true })}
-              type="text"
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="Name"
-            />
-          </div>
-        </div>
-        <input
-          {...register("email", { required: true })}
-          type="email"
-          className="form-control block w-full px-3 py-1.5 mb-6 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-          placeholder="Email address"
-        />
-        <input
-          {...register("password", { required: true })}
-          type="password"
-          className="form-control block w-full px-3 py-1.5 mb-6 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-          placeholder="Password"
-        />
-        {errors.email && <span>This field is required</span>}
+        {textInputs}
         <div className="mt-9"></div>
         <input
           type="submit"
