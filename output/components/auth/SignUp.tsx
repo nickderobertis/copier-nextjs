@@ -1,12 +1,18 @@
 import { ReactNode, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import TextInput from "../forms/TextInput";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-type FormData = {
-  name: string;
-  email: string;
-  password: string;
-};
+const schema = yup
+  .object({
+    name: yup.string().required(),
+    email: yup.string().email().required(),
+    password: yup.string().required(),
+  })
+  .required();
+
+type SignUpData = yup.TypeOf<typeof schema>;
 
 function TextInputWrapper(props: { input: ReactNode }): JSX.Element {
   const { input } = props;
@@ -22,7 +28,7 @@ export default function SignUp(): JSX.Element {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<SignUpData>({ resolver: yupResolver(schema) });
   const onSubmit = data => console.log(data);
 
   const textInputs: ReactNode[] = useMemo(() => {
