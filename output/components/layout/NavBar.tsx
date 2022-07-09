@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import Button from "../core/buttons/Button";
 import SignUp from "../auth/SignUp";
 import ReactModal from "react-modal";
+import LogIn from "../auth/LogIn";
 
 const signUpModalStyles: ReactModal.Styles = {
   content: {
@@ -16,6 +17,7 @@ const signUpModalStyles: ReactModal.Styles = {
     transform: "translate(-50%, -50%)",
   },
 };
+const logInModalStyles: ReactModal.Styles = signUpModalStyles;
 
 export default function NavBar(): JSX.Element {
   const router = useRouter();
@@ -99,8 +101,9 @@ export default function NavBar(): JSX.Element {
       <Modal
         isOpen={!!router.query.login}
         onRequestClose={() => router.push("/")}
+        style={logInModalStyles}
       >
-        <p>login</p>
+        <LogIn />
       </Modal>
       <Modal
         isOpen={!!router.query.signup}
