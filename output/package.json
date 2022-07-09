@@ -16,8 +16,8 @@
     "start-prod": "next start",
     "start-export": "http-server out",
     "storybook": "concurrently npm:dev:css npm:start-storybook",
-    "start-storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "start-storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.5",
