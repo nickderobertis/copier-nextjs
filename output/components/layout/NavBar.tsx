@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function NavBar(props): JSX.Element {
+export default function NavBar(): JSX.Element {
   return (
     <nav className="navbar navbar-expand-lg shadow-md py-2 bg-white relative flex items-center w-full justify-between">
       <div className="px-6 w-full flex flex-wrap items-center justify-between">
