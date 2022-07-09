@@ -2,15 +2,23 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Modal from "react-modal";
 import Button from "../core/buttons/Button";
+import SignUp from "../auth/SignUp";
+import ReactModal from "react-modal";
 
-Modal.setAppElement("#__next");
+const signUpModalStyles: ReactModal.Styles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    width: "50%",
+    minWidth: "400px",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
 export default function NavBar(): JSX.Element {
   const router = useRouter();
-
-  function onSignUpClicked(): void {
-    console.log("sign up clicked");
-  }
 
   return (
     <>
@@ -97,8 +105,9 @@ export default function NavBar(): JSX.Element {
       <Modal
         isOpen={!!router.query.signup}
         onRequestClose={() => router.push("/")}
+        style={signUpModalStyles}
       >
-        <p>signup</p>
+        <SignUp />
       </Modal>
     </>
   );
