@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import TextInput from "../forms/TextInput";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import SubmitButton from "../core/buttons/SubmitButton";
 
 const schema = yup
   .object({
@@ -29,7 +30,7 @@ export default function SignUp(): JSX.Element {
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpData>({ resolver: yupResolver(schema) });
-  const onSubmit = data => console.log(data);
+  const onSubmit = (data: SignUpData) => console.log("signed up with", data);
 
   const textInputs: ReactNode[] = useMemo(() => {
     const baseInputs = [
@@ -62,13 +63,7 @@ export default function SignUp(): JSX.Element {
       <form onSubmit={handleSubmit(onSubmit)}>
         {textInputs}
         <div className="mt-9"></div>
-        <input
-          type="submit"
-          value="Sign up"
-          data-mdb-ripple="true"
-          data-mdb-ripple-color="light"
-          className="inline-block px-6 py-2.5 mb-6 w-full bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-        />
+        <SubmitButton text="Sign up" />
       </form>
     </div>
   );

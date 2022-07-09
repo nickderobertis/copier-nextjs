@@ -1,6 +1,11 @@
 import Link from "next/link";
+import Button from "../core/buttons/Button";
 
 export default function NavBar(): JSX.Element {
+  function onSignUpClicked(): void {
+    console.log("sign up clicked");
+  }
+
   return (
     <nav className="navbar navbar-expand-lg shadow-md py-2 bg-white relative flex items-center w-full justify-between">
       <div className="px-6 w-full flex flex-wrap items-center justify-between">
@@ -66,14 +71,7 @@ export default function NavBar(): JSX.Element {
           >
             Login
           </button>
-          <button
-            type="button"
-            className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
-          >
-            Sign up for free
-          </button>
+          <Button text="Sign up for free" onClick={onSignUpClicked} />
         </div>
       </div>
     </nav>
