@@ -22,6 +22,10 @@ const logInModalStyles: ReactModal.Styles = signUpModalStyles;
 export default function NavBar(): JSX.Element {
   const router = useRouter();
 
+  const currentRoute = router.pathname;
+  const loginHref = `${currentRoute}?login=true`;
+  const signUpHref = `${currentRoute}?signup=true`;
+
   return (
     <>
       <nav className="navbar navbar-expand-lg shadow-md py-2 bg-white relative flex items-center w-full justify-between">
@@ -58,7 +62,7 @@ export default function NavBar(): JSX.Element {
             </ul>
           </div>
           <div className="flex items-center lg:ml-auto">
-            <Link href="/?login=true" as="/login">
+            <Link href={loginHref} as="/login">
               <button
                 type="button"
                 className="inline-block px-6 py-2.5 mr-2 bg-transparent text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:text-blue-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out"
@@ -68,7 +72,7 @@ export default function NavBar(): JSX.Element {
                 Login
               </button>
             </Link>
-            <Link href="/?signup=true" as="/signup">
+            <Link href={signUpHref} as="/signup">
               <a>
                 <Button text="Sign up for free" />
               </a>
@@ -78,14 +82,14 @@ export default function NavBar(): JSX.Element {
       </nav>
       <Modal
         isOpen={!!router.query.login}
-        onRequestClose={() => router.push("/")}
+        onRequestClose={() => router.push(currentRoute)}
         style={logInModalStyles}
       >
         <LogIn />
       </Modal>
       <Modal
         isOpen={!!router.query.signup}
-        onRequestClose={() => router.push("/")}
+        onRequestClose={() => router.push(currentRoute)}
         style={signUpModalStyles}
       >
         <SignUp />
