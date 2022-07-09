@@ -1,19 +1,17 @@
 import { ReactNode, useMemo } from "react";
 import { useForm } from "react-hook-form";
-import TextInput from "../forms/TextInput";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import SubmitButton from "../core/buttons/SubmitButton";
-import Link from "next/link";
+import SubmitButton from "../../core/buttons/SubmitButton";
+import TextInput from "../../forms/TextInput";
 
 const schema = yup
   .object({
     email: yup.string().email().required(),
-    password: yup.string().required(),
   })
   .required();
 
-type LoginData = yup.TypeOf<typeof schema>;
+type ForgotPasswordBeginData = yup.TypeOf<typeof schema>;
 
 function TextInputWrapper(props: { input: ReactNode }): JSX.Element {
   const { input } = props;
@@ -29,8 +27,9 @@ export default function LogIn(): JSX.Element {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginData>({ resolver: yupResolver(schema) });
-  const onSubmit = (data: LoginData) => console.log("logged in with", data);
+  } = useForm<ForgotPasswordBeginData>({ resolver: yupResolver(schema) });
+  const onSubmit = (data: ForgotPasswordBeginData) =>
+    console.log("forgot password with", data);
 
   const textInputs: ReactNode[] = useMemo(() => {
     const baseInputs = [
@@ -40,31 +39,23 @@ export default function LogIn(): JSX.Element {
         placeholder="Email address"
         error={errors.email}
       />,
-      <TextInput
-        {...register("password", { required: true })}
-        type="password"
-        placeholder="Password"
-        error={errors.password}
-      />,
     ];
     return baseInputs.map((input, index) => (
       <TextInputWrapper key={index} input={input} />
     ));
-  }, [errors.email, errors.password]);
+  }, [errors.email]);
 
   return (
     <div className="block rounded-lg shadow-lg bg-white px-6 py-12 md:px-12">
       <form onSubmit={handleSubmit(onSubmit)}>
+        <p>
+          Enter your email address and we'll send you a link to reset your
+          password.
+        </p>
+        <div className="mt-6"></div>
         {textInputs}
-        <div className="mt-9"></div>
-        <SubmitButton text="Log in" />
-        <Link href="/forgot-password">
-          <div className="pt-4">
-            <a className="text-sm text-gray-600 hover:text-gray-900" href="#">
-              Forgot Password?
-            </a>
-          </div>
-        </Link>
+        <div className="mt-12"></div>
+        <SubmitButton text="Send me a Link" />
       </form>
     </div>
   );

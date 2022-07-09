@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Modal from "react-modal";
-import Button from "../core/buttons/Button";
-import SignUp from "../auth/SignUp";
+import Button from "../buttons/Button";
+import SignUp from "../../auth/SignUp";
 import ReactModal from "react-modal";
-import LogIn from "../auth/LogIn";
+import LogIn from "../../auth/LogIn";
 
 const signUpModalStyles: ReactModal.Styles = {
   content: {

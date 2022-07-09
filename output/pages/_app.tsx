@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Modal from "react-modal";
-import MainLayout from "../components/layout/MainLayout";
+import MainLayout from "../components/core/layout/MainLayout";
 
 Modal.setAppElement("#__next");
 
