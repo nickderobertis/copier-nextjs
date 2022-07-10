@@ -8,7 +8,7 @@ import {
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import SubmitButton from "../../core/buttons/SubmitButton";
-import TextInput from "../../forms/TextInput";
+import ForgotPasswordCard from "./ForgotPasswordCard";
 
 type TextInputCreatorOptions<T> = {
   register: UseFormRegister<T>;
@@ -56,7 +56,7 @@ export default function ForgotPasswordForm<T>({
   }, [errors]);
 
   return (
-    <div className="block rounded-lg shadow-lg bg-white px-6 py-12 md:px-12">
+    <ForgotPasswordCard>
       <form onSubmit={handleSubmit(onSubmit)}>
         <p>{description}</p>
         <div className="mt-6"></div>
@@ -64,6 +64,6 @@ export default function ForgotPasswordForm<T>({
         <div className="mt-12"></div>
         <SubmitButton text={submitText} />
       </form>
-    </div>
+    </ForgotPasswordCard>
   );
 }
