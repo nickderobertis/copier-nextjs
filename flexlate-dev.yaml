@@ -25,10 +25,12 @@ run_configs:
       - fxt merge
       - npm install -g pnpm
       - pnpm install
-      # Use sed to insert a line assetPrefix: "/copier-nextjs-example/", into next.config.js on line 3
+      # Use sed to insert a line assetPrefix: "/copier-nextjs-example/", basePath: "/copier-nextjs-example",
+      # into next.config.js on line 3
       # This is necessary for Github Pages to work, see https://gregrickaby.blog/2020/03/21/next-js-github-pages
+      # And also https://nextjs.org/docs/api-reference/next.config.js/basepath
       - |
-        sed -i '3i\  assetPrefix: "/copier-nextjs-example/",' ./next.config.js
+        sed -i '3i\  assetPrefix: "/copier-nextjs-example/", basePath: "/copier-nextjs-example",' ./next.config.js
       - pnpm export
       - npx gh-pages -d ./out --dotfiles=true
       - git push --all origin
