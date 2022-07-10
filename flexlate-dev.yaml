@@ -32,7 +32,7 @@ run_configs:
       - pnpm export
       - ls -la ./out
       - ls -la ./public
-      - npx gh-pages -d ./out
+      - npx gh-pages -d ./out --dotfiles=true
       - git push --all origin
       pre_check:
       - if [ -n "$(find . -prune -empty 2>/dev/null)" ]; then gh repo clone {{ data.folder_name
