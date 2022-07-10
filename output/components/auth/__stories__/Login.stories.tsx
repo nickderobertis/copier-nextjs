@@ -1,4 +1,4 @@
-import LogIn from "../LogIn";
+import LogIn from "../login/LogIn";
 
 export default {
   title: "Components/Auth/LogIn",

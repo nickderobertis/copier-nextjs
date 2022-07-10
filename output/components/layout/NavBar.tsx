@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import Button from "../core/buttons/Button";
 import SignUp from "../auth/SignUp";
 import ReactModal from "react-modal";
-import LogIn from "../auth/LogIn";
+import LogIn from "../auth/login/LogIn";
 
 const signUpModalStyles: ReactModal.Styles = {
   content: {

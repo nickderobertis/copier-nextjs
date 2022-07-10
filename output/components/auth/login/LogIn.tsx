@@ -1,10 +1,11 @@
 import { ReactNode, useMemo } from "react";
 import { useForm } from "react-hook-form";
-import TextInput from "../forms/TextInput";
+import TextInput from "../../forms/TextInput";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import SubmitButton from "../core/buttons/SubmitButton";
+import SubmitButton from "../../core/buttons/SubmitButton";
 import Link from "next/link";
+import LogInLink from "./LogInLink";
 
 const schema = yup
   .object({
@@ -58,13 +59,14 @@ export default function LogIn(): JSX.Element {
         {textInputs}
         <div className="mt-9"></div>
         <SubmitButton text="Log in" />
-        <Link href="/forgot-password">
-          <div className="pt-4">
-            <a className="text-sm text-gray-600 hover:text-gray-900" href="#">
-              Forgot Password?
-            </a>
-          </div>
-        </Link>
+        <div className="flex justify-around">
+          <LogInLink href="/forgot-password" text="Forgot password?" />
+          <LogInLink
+            href="/?signup=true"
+            as="/signup"
+            text="Need an account?"
+          />
+        </div>
       </form>
     </div>
   );
