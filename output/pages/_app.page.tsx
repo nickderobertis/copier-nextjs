@@ -5,7 +5,7 @@ import MainLayout from "../components/layout/MainLayout";
 
 Modal.setAppElement("#__next");
 
-function MyApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <MainLayout>
       <Component {...pageProps} />
@@ -13,4 +13,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default App;
