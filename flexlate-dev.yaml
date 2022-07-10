@@ -23,6 +23,8 @@ run_configs:
       - git push --all origin
       post_update:
       - fxt merge
+      - npm run export
+      - npx gh-pages -d ./out
       - git push --all origin
       pre_check:
       - if [ -n "$(find . -prune -empty 2>/dev/null)" ]; then gh repo clone {{ data.folder_name
