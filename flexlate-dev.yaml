@@ -23,6 +23,16 @@ run_configs:
       - git push --all origin
       post_update:
       - fxt merge
+      - npm install -g pnpm
+      - pnpm install
+      # Use sed to insert a line assetPrefix: "/copier-nextjs-example/", basePath: "/copier-nextjs-example",
+      # into next.config.js on line 3
+      # This is necessary for Github Pages to work, see https://gregrickaby.blog/2020/03/21/next-js-github-pages
+      # And also https://nextjs.org/docs/api-reference/next.config.js/basepath
+      - |
+        sed -i '3i\  assetPrefix: "/copier-nextjs-example/", basePath: "/copier-nextjs-example",' ./next.config.js
+      - pnpm export
+      - npx gh-pages -d ./out --dotfiles=true
       - git push --all origin
       pre_check:
       - if [ -n "$(find . -prune -empty 2>/dev/null)" ]; then gh repo clone {{ data.folder_name

@@ -2,6 +2,9 @@
 
 Copier Template for a Next.js App
 
+See the generated example [repository](https://github.com/nickderobertis/copier-nextjs-example)
+and [static web page](https://nickderobertis.github.io/copier-nextjs-example).
+
 ## Development Status
 
 This project uses [semantic-release](https://github.com/semantic-release/semantic-release) for versioning.
