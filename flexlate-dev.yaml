@@ -30,6 +30,8 @@ run_configs:
       - |
         sed -i '3i\  assetPrefix: "/copier-nextjs-example/",' ./next.config.js
       - pnpm export
+      - ls -l ./out
+      - ls -l ./public
       - npx gh-pages -d ./out
       - git push --all origin
       pre_check:
