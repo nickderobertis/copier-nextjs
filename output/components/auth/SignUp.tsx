@@ -4,6 +4,7 @@ import TextInput from "../forms/TextInput";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import SubmitButton from "../core/buttons/SubmitButton";
+import AuthLink from "./AuthLink";
 
 const schema = yup
   .object({
@@ -64,6 +65,11 @@ export default function SignUp(): JSX.Element {
         {textInputs}
         <div className="mt-9"></div>
         <SubmitButton text="Sign up" />
+        <AuthLink
+          href="/?login=true"
+          as="/login"
+          text="Already have an account?"
+        />
       </form>
     </div>
   );

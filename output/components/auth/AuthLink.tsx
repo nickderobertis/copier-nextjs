@@ -6,7 +6,7 @@ type Props = {
   text: string;
 };
 
-export default function LogInLink({ href, text, as }: Props): JSX.Element {
+export default function AuthLink({ href, text, as }: Props): JSX.Element {
   return (
     <Link href={href} as={as}>
       <div className="pt-4">

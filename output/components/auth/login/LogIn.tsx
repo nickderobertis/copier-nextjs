@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import SubmitButton from "../../core/buttons/SubmitButton";
 import Link from "next/link";
-import LogInLink from "./LogInLink";
+import AuthLink from "../AuthLink";
 
 const schema = yup
   .object({
@@ -60,12 +60,8 @@ export default function LogIn(): JSX.Element {
         <div className="mt-9"></div>
         <SubmitButton text="Log in" />
         <div className="flex justify-around">
-          <LogInLink href="/forgot-password" text="Forgot password?" />
-          <LogInLink
-            href="/?signup=true"
-            as="/signup"
-            text="Need an account?"
-          />
+          <AuthLink href="/forgot-password" text="Forgot password?" />
+          <AuthLink href="/?signup=true" as="/signup" text="Need an account?" />
         </div>
       </form>
     </div>
