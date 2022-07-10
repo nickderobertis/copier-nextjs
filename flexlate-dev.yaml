@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://nickderobertis.github.io/flexlate-dev/_static/config-schema.json
+commands: []
+data:
+  default:
+    data:
+      author: Nick DeRobertis
+      full_name: Copier Next.js Example
+      package_name: copier-nextjs-example
+      short_description: Example output for copier-nextjs
+    folder_name: copier-nextjs-example
+run_configs:
+  default:
+    data_name: default
+    serve:
+      post_init:
+        - pnpm install
+        - run: pnpm dev
+          background: true
+    publish:
+      post_init:
+      - gh repo create --public --source=.
+      - git push origin master
+      - git push --all origin
+      post_update:
+      - fxt merge
+      - git push --all origin
+      pre_check:
+      - if [ -n "$(find . -prune -empty 2>/dev/null)" ]; then gh repo clone {{ data.folder_name
+        }} .; else git pull origin master; fi
