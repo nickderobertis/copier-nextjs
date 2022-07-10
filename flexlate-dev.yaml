@@ -24,6 +24,7 @@ run_configs:
       post_update:
       - fxt merge
       - npm install -g pnpm
+      - pnpm install
       - pnpm export
       - npx gh-pages -d ./out
       - git push --all origin
