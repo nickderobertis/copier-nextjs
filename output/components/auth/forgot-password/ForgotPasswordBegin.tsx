@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import * as yup from "yup";
 import TextInput from "../../forms/TextInput";
 import ForgotPasswordForm, { TextInputCreator } from "./ForgotPasswordForm";
@@ -25,8 +26,11 @@ const textInputCreator: TextInputCreator<ForgotPasswordBeginData> = ({
 };
 
 export default function ForgotPasswordBegin(): JSX.Element {
-  const onSubmit = (data: ForgotPasswordBeginData) =>
+  const router = useRouter();
+  const onSubmit = (data: ForgotPasswordBeginData) => {
     console.log("forgot password with", data);
+    router.push("/forgot-password-submitted?email=" + data.email);
+  };
 
   return (
     <ForgotPasswordForm
