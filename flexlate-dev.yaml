@@ -23,7 +23,8 @@ run_configs:
       - git push --all origin
       post_update:
       - fxt merge
-      - npm run export
+      - npm install -g pnpm
+      - pnpm export
       - npx gh-pages -d ./out
       - git push --all origin
       pre_check:
