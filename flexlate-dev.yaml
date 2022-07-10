@@ -29,7 +29,6 @@ run_configs:
       # This is necessary for Github Pages to work, see https://gregrickaby.blog/2020/03/21/next-js-github-pages
       - |
         sed -i '3i\  assetPrefix: "/copier-nextjs-example/",' ./next.config.js
-      - touch public/.nojekyll
       - pnpm export
       - npx gh-pages -d ./out
       - git push --all origin
