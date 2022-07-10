@@ -10,6 +10,7 @@
     "dev": "concurrently npm:dev:*",
     "dev:css": "pnpm build:css --watch",
     "dev:server": "next dev",
+    "dev-export": "pnpm export && pnpm start-export",
     "export": "pnpm build && pnpm export:next",
     "export:next": "next export",
     "lint": "next lint",

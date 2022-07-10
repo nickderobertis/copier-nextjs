@@ -53,7 +53,7 @@ export default function ForgotPasswordForm<T>({
       <TextInputWrapper key={index} input={input} />
     ));
     // TODO: Should not use complex object in dependencies without deep compare
-  }, [errors]);
+  }, [errors, register, textInputCreator]);
 
   return (
     <ForgotPasswordCard>

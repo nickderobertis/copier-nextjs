@@ -4,11 +4,8 @@ import Button from "../../core/buttons/Button";
 import ForgotPasswordCard from "./ForgotPasswordCard";
 
 export default function ForgotPasswordSuccess(): JSX.Element {
-  const router = useRouter();
-  const onClick = useCallback(
-    () => router.push("/?login=true", "/login"),
-    [router.push]
-  );
+  const { push } = useRouter();
+  const onClick = useCallback(() => push("/?login=true", "/login"), [push]);
   return (
     <ForgotPasswordCard>
       <p>Your password has been successfully reset.</p>

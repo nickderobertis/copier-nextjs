@@ -40,24 +40,27 @@ export default function SignUp(): JSX.Element {
         type="text"
         placeholder="Name"
         error={errors.name}
+        key="name"
       />,
       <TextInput
         {...register("email", { required: true })}
         type="email"
         placeholder="Email address"
         error={errors.email}
+        key="email"
       />,
       <TextInput
         {...register("password", { required: true })}
         type="password"
         placeholder="Password"
         error={errors.password}
+        key="password"
       />,
     ];
     return baseInputs.map((input, index) => (
       <TextInputWrapper key={index} input={input} />
     ));
-  }, [errors.email, errors.name, errors.password]);
+  }, [errors.email, errors.name, errors.password, register]);
 
   return (
     <div className="block rounded-lg shadow-lg bg-white px-6 py-12 md:px-12">

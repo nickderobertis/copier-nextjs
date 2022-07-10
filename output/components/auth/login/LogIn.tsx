@@ -40,18 +40,20 @@ export default function LogIn(): JSX.Element {
         type="email"
         placeholder="Email address"
         error={errors.email}
+        key="email"
       />,
       <TextInput
         {...register("password", { required: true })}
         type="password"
         placeholder="Password"
         error={errors.password}
+        key="password"
       />,
     ];
     return baseInputs.map((input, index) => (
       <TextInputWrapper key={index} input={input} />
     ));
-  }, [errors.email, errors.password]);
+  }, [errors.email, errors.password, register]);
 
   return (
     <div className="block rounded-lg shadow-lg bg-white px-6 py-12 md:px-12">

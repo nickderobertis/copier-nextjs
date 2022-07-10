@@ -26,6 +26,7 @@ const textInputCreator: TextInputCreator<ForgotPasswordResetData> = ({
       type="password"
       placeholder="New Password"
       error={errors.password}
+      key="password"
     />,
   ];
 };

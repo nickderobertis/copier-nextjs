@@ -21,6 +21,7 @@ const textInputCreator: TextInputCreator<ForgotPasswordBeginData> = ({
       type="email"
       placeholder="Email address"
       error={errors.email}
+      key="email"
     />,
   ];
 };
